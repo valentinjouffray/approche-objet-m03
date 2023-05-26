@@ -1,23 +1,23 @@
-package listes;
+package tri;
 
-import java.util.Comparator;
 import java.util.Objects;
 
-public class Ville implements Comparable<Ville> {
+public class Pays implements Comparable<Pays> {
     private String nom;
     private int pop;
-
-    public Ville(String nom, int pop) {
+    private String continent;
+    public Pays(String nom, int pop, String continent) {
         this.nom = nom;
         this.pop = pop;
+        this.continent = continent;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Ville)){
+        if (!(o instanceof Pays)){
             return false;
         }
-        Ville ville = (Ville) o;
+        Pays ville = (Pays) o;
         return Objects.equals(nom, ville.getNom()) && Objects.equals(pop, ville.getPop());
     }
 
@@ -31,7 +31,7 @@ public class Ville implements Comparable<Ville> {
     }
 
     @Override
-    public int compareTo(Ville o) {
+    public int compareTo(Pays o) {
         // On utilise la méthode compareTo de la classe String
         // return this.nom.compareTo(o.getNom());
 
@@ -45,7 +45,7 @@ public class Ville implements Comparable<Ville> {
         //return this.pop - o.getPop();
     }
 
-    public Ville(String nom) {
+    public Pays(String nom) {
         this.nom = nom;
         this.pop = pop;
     }
@@ -74,4 +74,11 @@ public class Ville implements Comparable<Ville> {
         this.pop = pop;
     }
 
+    public String getContinent() {
+        return continent;
+    }
+
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
 }
