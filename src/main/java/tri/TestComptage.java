@@ -15,7 +15,6 @@ public class TestComptage {
         listePays.add(new Pays("Allemagne", 80, "Europe"));
         listePays.add(new Pays("Chine", 1400, "Asie"));
         listePays.add(new Pays("Indonésie", 220, "Océanie"));
-        listePays.add(new Pays("Etats-Unis", 350, "Amérique du Nord"));
 
         // Mise en place du comptage : nombre de pays par continents
         // Structure de la HashMap
@@ -31,7 +30,6 @@ public class TestComptage {
                 compteurs.put(p.getContinent(), 0);
             }
         }
-
         System.out.println(compteurs);
 
         // Etape 2 : comptage
@@ -41,6 +39,5 @@ public class TestComptage {
             compteur++;
             compteurs.put(continent, compteur);
         }
-        System.out.println(compteurs);
     }
 }

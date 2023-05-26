@@ -15,23 +15,8 @@ public class TestVilles {
         villes.add(new Ville("Marseille", 850700));
         villes.add(new Ville("Tarbes", 40600));
 
-        // Collection représente le concept de Collection : ArrayList implémente Collection
-        // Cela a pour effet qu'ArrayList a une liste de méthode imposée par Collection
+        Ville v = Ville.PARIS; // PARIS est une variable de classe donc accessible sur la classe Ville
 
-        Collections.sort(villes, new VillePopComparator(false)); // la méthode sort appelle votre méthode compareTo
-
-        for (Ville v: villes) {
-            System.out.println(v);
-        }
-        System.out.println("-----------------------------");
-
-        Ville ville = Collections.min(villes, new VilleNomComparator());
-        System.out.println(ville);
-
-        System.out.println("-----------------------------");
-        for (Ville v: villes) {
-            System.out.println(v);
-        }
 
     }
 }
