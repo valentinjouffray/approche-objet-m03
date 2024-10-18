@@ -1,0 +1,20 @@
+package fr.diginamic.instances;
+
+import fr.diginamic.instances.entites.Avion;
+import fr.diginamic.instances.entites.Passager;
+import fr.diginamic.instances.entites.Pilote;
+
+import java.util.Date;
+
+public class TestAvion {
+    public static void main(String[] args) {
+        Pilote pilote1 = new Pilote("John", "Doe", new Date());
+        Pilote pilote2 = new Pilote("Jane", "Doe", new Date());
+        Passager passager1 = new Passager("Alice", "Doe", 1);
+        Passager passager2 = new Passager("Bob", "Doe", 2);
+        Passager passager3 = new Passager("Charlie", "Doe", 3);
+        Passager[] passagers = {passager1, passager2, passager3};
+        Avion avion1 = new Avion("F-GHJK", "Airbus", "A320", pilote1, passagers);
+        Avion avion2 = new Avion("F-GHJL", "Boeing", "737", pilote2, passagers);
+    }
+}
