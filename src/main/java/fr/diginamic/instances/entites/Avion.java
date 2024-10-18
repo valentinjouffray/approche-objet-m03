@@ -24,6 +24,14 @@ public class Avion {
         this.passagers = new Passager[0];
     }
 
+    public Avion(String immatriculation, String marque, String modele, Pilote pilote, int nbPassagers) {
+        this.immatriculation = immatriculation;
+        this.marque = marque;
+        this.modele = modele;
+        this.pilote = pilote;
+        this.passagers = new Passager[nbPassagers];
+    }
+
     public String getImmatriculation() {
         return immatriculation;
     }
