@@ -7,12 +7,19 @@ public class Avion {
     Pilote pilote;
     Passager[] passagers;
 
-    public Avion(String immatriculation, String marque, String modele, Pilote pilote, Passager[] passagers) {
+    public Avion(String immatriculation, String marque, String modele) {
+        this.immatriculation = immatriculation;
+        this.marque = marque;
+        this.modele = modele;
+        this.passagers = new Passager[0];
+    }
+
+    public Avion(String immatriculation, String marque, String modele, Pilote pilote) {
         this.immatriculation = immatriculation;
         this.marque = marque;
         this.modele = modele;
         this.pilote = pilote;
-        this.passagers = passagers;
+        this.passagers = new Passager[0];
     }
 
     public String getImmatriculation() {
