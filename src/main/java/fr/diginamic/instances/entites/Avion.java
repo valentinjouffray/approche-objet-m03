@@ -1,5 +1,7 @@
 package fr.diginamic.instances.entites;
 
+import java.util.Arrays;
+
 public class Avion {
     String immatriculation;
     String marque;
@@ -64,9 +66,7 @@ public class Avion {
 
     public void addPassager(Passager passager) {
         Passager[] newPassagers = new Passager[passagers.length + 1];
-        for (int i = 0; i < passagers.length; i++) {
-            newPassagers[i] = passagers[i];
-        }
+        System.arraycopy(passagers, 0, newPassagers, 0, passagers.length);
         newPassagers[passagers.length] = passager;
         passagers = newPassagers;
     }
@@ -81,5 +81,16 @@ public class Avion {
             }
         }
         passagers = newPassagers;
+    }
+
+    @Override
+    public String toString() {
+        String sb = "Avion{" + "immatriculation='" + immatriculation + '\'' +
+                ", marque='" + marque + '\'' +
+                ", modele='" + modele + '\'' +
+                ", pilote=" + pilote +
+                ", passagers=" + (passagers == null ? "null" : Arrays.asList(passagers).toString()) +
+                '}';
+        return sb;
     }
 }

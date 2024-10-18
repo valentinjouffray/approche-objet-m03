@@ -36,4 +36,13 @@ public class Pilote {
     public void setDateLicence(Date dateLicence) {
         this.dateLicence = dateLicence;
     }
+
+    @Override
+    public String toString() {
+        String sb = "Pilote{" + "prenom='" + prenom + '\'' +
+                ", nom='" + nom + '\'' +
+                ", dateLicence=" + dateLicence +
+                '}';
+        return sb;
+    }
 }
