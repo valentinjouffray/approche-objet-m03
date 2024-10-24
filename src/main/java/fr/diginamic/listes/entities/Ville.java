@@ -7,10 +7,17 @@ import java.util.Objects;
 public class Ville implements Comparable<Ville> {
     private String nom;
     private int nbHabitants;
+    private Continent continent;
 
-    public Ville(String nom, int nbHabitants) {
+    public Ville(String nom, int nbHabitants, Continent continent) {
         this.nom = nom;
         this.nbHabitants = nbHabitants;
+        this.continent = continent;
+    }
+
+    @Override
+    public String toString() {
+        return "Ville{" + "nom='" + nom + '\'' + ", nbHabitants=" + nbHabitants + ", continent=" + continent.getNom() + '}';
     }
 
     public String getNom() {
@@ -27,11 +34,6 @@ public class Ville implements Comparable<Ville> {
 
     public void setNbHabitants(int nbHabitants) {
         this.nbHabitants = nbHabitants;
-    }
-
-    @Override
-    public String toString() {
-        return "Ville{" + "nom='" + nom + '\'' + ", nbHabitants=" + nbHabitants + '}';
     }
 
     @Override
@@ -55,5 +57,13 @@ public class Ville implements Comparable<Ville> {
         // Définition de la sensibilité
         collator.setStrength(Collator.PRIMARY);
         return collator.compare(this.nom, ville.nom);
+    }
+
+    public Continent getContinent() {
+        return continent;
+    }
+
+    public void setContinent(Continent continent) {
+        this.continent = continent;
     }
 }
