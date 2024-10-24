@@ -1,8 +1,10 @@
 package fr.diginamic.listes.entities;
 
+import java.text.Collator;
+import java.util.Locale;
 import java.util.Objects;
 
-public class Ville {
+public class Ville implements Comparable<Ville> {
     private String nom;
     private int nbHabitants;
 
@@ -29,9 +31,7 @@ public class Ville {
 
     @Override
     public String toString() {
-        return "Ville{" + "nom='" + nom + '\'' +
-                ", nbHabitants=" + nbHabitants +
-                '}';
+        return "Ville{" + "nom='" + nom + '\'' + ", nbHabitants=" + nbHabitants + '}';
     }
 
     @Override
@@ -46,5 +46,14 @@ public class Ville {
     @Override
     public int hashCode() {
         return Objects.hash(nom, nbHabitants);
+    }
+
+    @Override
+    public int compareTo(Ville ville) {
+        // Paramétrage de la langue avec Collator
+        Collator collator = Collator.getInstance(Locale.FRANCE);
+        // Définition de la sensibilité
+        collator.setStrength(Collator.PRIMARY);
+        return collator.compare(this.nom, ville.nom);
     }
 }

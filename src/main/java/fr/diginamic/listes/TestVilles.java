@@ -25,5 +25,9 @@ public class TestVilles {
         }).collect(Collectors.toList());
         String villeListString = villeList.stream().map(ville -> String.format("%s %d", ville.getNom(), ville.getNbHabitants())).reduce((acc, val) -> acc + ", " + val).orElse("");
         System.out.printf("Ville avec plus de 100_000 habitants en majuscules : %s%n", villeListString);
+        //TP 14 tri
+        villeList = villeList.stream().sorted().toList();
+        System.out.println("Liste de villes triées dans l'ordre alphabétique :");
+        villeList.forEach(ville -> System.out.printf("%s%n", ville.getNom()));
     }
 }

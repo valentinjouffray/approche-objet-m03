@@ -2,7 +2,7 @@ package fr.diginamic.fichier.entities;
 
 import java.util.Objects;
 
-public class Ville {
+public class Ville implements Comparable<Ville> {
     private String nom;
     private String codeDepartement;
     private String nomRegion;
@@ -61,10 +61,12 @@ public class Ville {
 
     @Override
     public String toString() {
-        return "Ville{" + "nom='" + nom + '\'' +
-                ", codeDepartement=" + codeDepartement +
-                ", nomRegion='" + nomRegion + '\'' +
-                ", population=" + population +
-                '}';
+        return "Ville{" + "nom='" + nom + '\'' + ", codeDepartement=" + codeDepartement + ", nomRegion='" + nomRegion + '\'' + ", population=" + population + '}';
+    }
+
+    @Override
+    public int compareTo(Ville ville) {
+        // Tri ordre décroissant de population
+        return Integer.compare(ville.population, this.population);
     }
 }

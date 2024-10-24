@@ -1,6 +1,7 @@
 package fr.diginamic.fichier;
 
 import fr.diginamic.fichier.entities.Ville;
+import fr.diginamic.tri.ComparatorNom;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -41,7 +42,7 @@ public class CreerFichier {
         // List<Ville> villeList = new ArrayList<>(lines.stream().map(CreerFichier::parseVille).toList());
         villeList.addAll(lines.stream().map(CreerFichier::parseVille).toList());
         // villeList.stream().limit(10).forEach(System.out::println);
-        List<Ville> villeListSup25000 = villeList.stream().filter(ville -> ville != null && ville.getPopulation() > 25000).toList();
+        List<Ville> villeListSup25000 = villeList.stream().filter(ville -> ville != null && ville.getPopulation() > 25000).sorted(new ComparatorNom()).toList();
         Path recensement25000FilePath = Paths.get("C:\\Users\\vajou\\Downloads\\recensement25000.csv");
         try {
             if (Files.exists(recensement25000FilePath)) {
@@ -50,6 +51,8 @@ public class CreerFichier {
             String header = "Nom;Code département;Nom région;Population";
             Files.write(recensement25000FilePath, List.of(header));
             Files.write(recensement25000FilePath, villeListSup25000.stream().map(ville -> String.join(";", ville.getNom(), ville.getCodeDepartement(), ville.getNomRegion(), String.valueOf(ville.getPopulation()))).collect(Collectors.toList()), StandardOpenOption.APPEND);
+            exists = Files.exists(recensement25000FilePath);
+            System.out.printf("Le fichier %s a bien été créé : %b%n", recensement25000FilePath, exists);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
