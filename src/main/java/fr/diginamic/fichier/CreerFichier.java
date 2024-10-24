@@ -10,6 +10,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CreerFichier {
@@ -56,6 +58,15 @@ public class CreerFichier {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        // TP 13 maps
+        Map<String, Ville> villeMap = villeList.stream().filter(Objects::nonNull).collect(Collectors.toMap(ville -> ville.getCodeDepartement() + " - " + ville.getNom(), ville -> ville));
+        Ville villeMoinsHabitants = villeList.stream().min((clef, ville) -> ville.getPopulation()).orElseThrow();
+        System.out.printf("Ville avec moins d'habitants : %s%n", villeMoinsHabitants.getNom());
+        System.out.printf("Taille de la map: %d%n", villeMap.size());
+        Ville removedVille = villeMap.remove(villeMoinsHabitants.getCodeDepartement() + " - " + villeMoinsHabitants.getNom());
+        System.out.printf("Ville correctement supprimée: %b%n", removedVille != null && removedVille.equals(villeMoinsHabitants));
+        System.out.printf("Taille de la map après suppression: %d%n", villeMap.size());
     }
 
     private static Ville parseVille(String line) {
