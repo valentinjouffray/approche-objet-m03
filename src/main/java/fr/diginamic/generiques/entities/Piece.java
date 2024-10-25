@@ -2,7 +2,7 @@ package fr.diginamic.generiques.entities;
 
 import java.util.List;
 
-public class Piece<T> {
+public class Piece<T extends Equipement> {
     private String nom;
     private List<T> equipements;
 
